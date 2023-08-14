@@ -1,0 +1,57 @@
+version: '3.9'
+
+services:
+  rest-api:
+    image: node:18-alpine
+    container_name: rest-api
+    restart: on-failure
+    depends_on:
+      - postgres-db
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - DB_CONNECTION=${DB_CONNECTION}
+        - POSTGRES_USER=${POSTGRES_USER}
+        - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    ports:
+      - '8080:8080'
+    environment:
+      - DB_CONNECTION=${DB_CONNECTION}
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=password123@
+      - NODE_ENV=production
+      - LOG_LEVEL=info
+      - PORT= 8080
+
+  postgres-db:
+    container_name: postgres-db
+    image: postgres:alpine
+
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=password123@
+      - POSTGRES_DB=my-pg-db
+      - PGPASSWORD=password123@
+      - DB_CONNECTION=postgres://root:password123@postgres-db:5432/my-pg-db
+    tty: true
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  pg-admin:
+    container_name: pgadmin4_container
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=pgadmin@pgadmin.com
+      - PGADMIN_DEFAULT_PASSWORD=admin
+      - PGADMIN_LISTEN_PORT=5050
+    ports:
+      - '5050:5050'
+    volumes:
+      - my-pg-data:/var/lib/pgadmin
+volumes:
+  pgdata:
+    name: 'pgdata'
+  my-pg-data:
