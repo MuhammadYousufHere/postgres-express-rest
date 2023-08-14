@@ -1,0 +1,28 @@
+{
+  "info": {
+    "name": "REST API with Express SQL TS",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "User",
+      "item": [
+        {
+          "name": "Create User",
+          "resquest": { "method": "POST" },
+          "header": [],
+          "body": {
+            "mode": "raw",
+            "options": { "raw": { "language": "json" } }
+          },
+          "raw": "{\n    \"email\": \"{{email}}\",\n    \"password\": \"{{password}}\",\n       \"name\": \"{{name}}\"\n}",
+          "url": {
+            "raw": "{{endpoint}//api/users",
+            "host": ["{{endpoint}"],
+            "paths": ["api", "users"]
+          }
+        }
+      ]
+    }
+  ]
+}
