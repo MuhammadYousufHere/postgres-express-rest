@@ -1,0 +1,45 @@
+{
+  "env": {
+    "node": true,
+    "mocha": true,
+    "browser": true
+  },
+  "parser": "@typescript-eslint/parser",
+  "extends": ["google"],
+  "parserOptions": {
+    "projects": ["./tsconfig.json"],
+    "ecmaVersion": 9,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "modules": true
+    }
+  },
+  "plugins": ["prettier", "@typescript-eslint"],
+  "rules": {
+    "quote-props": ["error", "as-needed"],
+    "strict": ["error", "global"],
+    "arrow-parens": ["error", "as-needed"],
+    "max-len": [
+      "error",
+      {
+        "code": 120
+      }
+    ],
+    "indent": ["error", 2],
+    "@typescript-eslint/no-unused-vars": ["warn", { "argsIgnorePattern": "req|res|next|err" }],
+    "@typescript-eslint/no-unnecessary-condition": "warn",
+    "object-curly-spacing": ["error", "always"],
+    "require-jsdoc": "off",
+    "new-cap": ["error", { "capIsNewExceptions": ["express.Router"] }],
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          ["builtin", "external"],
+          ["internal", "index", "sibling", "parent", "object", "type"]
+        ],
+        "newlines-between": "always-and-inside-groups"
+      }
+    ]
+  }
+}
