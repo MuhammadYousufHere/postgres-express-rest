@@ -14,7 +14,7 @@ export async function InsertUser(
     newUser,
     Object.keys(newUser),
     'users'
-  )} RETURNING id, created_at as "createAt, updated_at as "updatedAt"`
+  )} RETURNING user_id, created_at as "createAt, updated_at as "updatedAt"`
 
   return conn.one(insertStatemenet).catch((err: Error) => {
     throw new Error(`Failed inserting user with data ${JSON.stringify(user)}: ${err.stack}`)
