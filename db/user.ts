@@ -16,4 +16,7 @@ export class Users {
   init(): Promise<number[]> {
     return this.db.map(sql.init, [], (row: { user_id: number }) => row.user_id)
   }
+  drop(): Promise<null> {
+    return this.db.none(sql.init)
+  }
 }
