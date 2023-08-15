@@ -17,6 +17,7 @@ export function getUserRoutes(conn: IDatabase<unknown>) {
         return res.status(400).send({ errors })
       }
       const addNewUser = await signUp(conn, req.body)
+      return res.json({ ...addNewUser, email: req.body.email, emailVerified: false, archivedAt: null, bannedAt: null })
     } catch (err: any) {
       if (err.message.includes('invalid-emial-key')) {
         return res.status(400).send({
