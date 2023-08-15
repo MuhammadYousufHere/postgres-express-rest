@@ -2,10 +2,6 @@ import { join } from 'path'
 import { QueryFile, type IQueryFileOptions } from 'pg-promise'
 import log from '../../src/utils/logger'
 
-export const users = {
-  create: sql('users/create.sql'),
-  init: sql('users/init.sql'),
-}
 export const products = {}
 
 function sql(file: string): QueryFile {
@@ -21,4 +17,9 @@ function sql(file: string): QueryFile {
     log.error(qf.error)
   }
   return qf
+}
+export const users = {
+  create: sql('users/create.sql'),
+  init: sql('users/init.sql'),
+  drop: sql('users/drop.sql'),
 }
