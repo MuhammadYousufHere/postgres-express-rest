@@ -18,6 +18,10 @@ const pgConfig: IInitOptions<IExtensions> = {
   extend(obj: ExtendedProtocol, _dc: any) {
     obj.users = new Users(obj, pgP)
   },
+  connect(e) {
+    const cp = e.client.connectionParameters
+    log.info('Connected to database', cp.database)
+  },
 }
 
 // Initializing the library
@@ -35,9 +39,8 @@ Diagnostic.init(pgConfig)
 function waitDBConnect(db: IDatabase<any>, retries = 5) {
   return asyncRetry(
     async () => {
-      const connection = await db.connect()
+      const connection = await db.connect({ direct: true })
       await connection.done()
-      log.info('DB Connected!')
       return connection
     },
     { retries }
