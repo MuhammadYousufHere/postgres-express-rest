@@ -18,6 +18,20 @@ docker exec -it postgres-container bash
 
 ps -ef | grep postgres
 
+# Connecting the db
+
+psql -h /tmp/ dbname
+
 # inspect docker container
 
 docker inspect hashcontianerofpostgres
+
+-===============================
+
+# list all database available
+
+psql -l
+
+# command to connect to psql
+
+psql <databaseName> <usernamePostgresql>
