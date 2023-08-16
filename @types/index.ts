@@ -1,4 +1,4 @@
-import { Users } from '../db/user'
+import { Users } from '../src/db/user'
 
 //add all the tables here
 export interface IExtensions {
@@ -8,3 +8,6 @@ export interface IUser {
   email: string
   password: string
 }
+
+export * from './request'
+export * from './urlParams'
