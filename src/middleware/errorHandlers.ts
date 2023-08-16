@@ -1,8 +1,9 @@
+import 'express-async-errors'
 import { Request, Response, NextFunction } from 'express'
 import createHttpError, { type HttpError, isHttpError } from 'http-errors'
 import log from '../utils/logger'
 
-export const errorHandler = (err: any, req: Request, res: Response, next: NextFunction) => {
+export const errorHandler = (err: any, _req: Request, res: Response, _next: NextFunction) => {
   let error: HttpError
   if (isHttpError(err)) {
     error = err
