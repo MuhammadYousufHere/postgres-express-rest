@@ -28,6 +28,13 @@ docker inspect hashcontianerofpostgres
 
 -===============================
 
+# check instance of db
+
+docker-compose run container-name bash
+psql --host=container-name --username=ali --dbname=my-pg-db
+
+ctlr + d x 2 get get out
+
 # list all database available
 
 psql -l
