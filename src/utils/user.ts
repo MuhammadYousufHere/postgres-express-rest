@@ -1,6 +1,6 @@
 import _ from 'lodash'
 import type { IDatabase } from 'pg-promise'
-import { pgP } from './db-client'
+import { pgP } from '../../config/db-client'
 import type { IUser } from '../../@types'
 
 const insertSupportCol: Array<string> = ['email', 'password']
