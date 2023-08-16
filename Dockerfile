@@ -24,6 +24,8 @@ COPY . .
 
 RUN yarn build
 
+RUN yarn post-build
+
 EXPOSE 8080
 
 CMD ["node", "build/src/app.js"]

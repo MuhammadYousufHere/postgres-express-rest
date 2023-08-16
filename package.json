@@ -8,6 +8,8 @@
   "scripts": {
     "dev": "ts-node-dev --respawn --transpile-only src/app.ts",
     "build": "tsc -p tsconfig.build.json",
+    "copy-files": "copyfiles --error --up 1 src/db/sql/users/*.* build",
+    "post-build": "yarn run copy-files",
     "type-check": "tsc --noEmit",
     "lint:fix": "eslint --fix \"src/**/*.{ts,js}\"",
     "lint": "eslint \"src/**/*.{ts,js}\"",
@@ -33,9 +35,11 @@
     "@types/response-time": "^2.3.5",
     "@types/stoppable": "^1.1.1",
     "@types/supertest": "^2.0.12",
+    "@types/uuid": "^9.0.2",
     "@typescript-eslint/eslint-plugin": "^6.4.0",
     "@typescript-eslint/parser": "^6.4.0",
     "chai": "^4.3.7",
+    "copyfiles": "^2.4.1",
     "eslint": "^8.47.0",
     "eslint-config-google": "^0.14.0",
     "eslint-import-resolver-typescript": "^3.6.0",
@@ -67,6 +71,7 @@
     "express-validator": "^7.0.1",
     "helmet": "^7.0.0",
     "http-errors": "^2.0.0",
+    "ioredis": "^5.3.2",
     "jsonwebtoken": "^9.0.1",
     "jwt-decode": "^3.1.2",
     "lodash": "^4.17.21",
@@ -77,6 +82,7 @@
     "reflect-metadata": "^0.1.13",
     "response-time": "^2.3.2",
     "stoppable": "^1.1.0",
+    "uuid": "^9.0.0",
     "winston": "^3.10.0",
     "zod": "^3.21.4"
   }
