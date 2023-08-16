@@ -16,7 +16,9 @@
     "docker:build": "docker build -t rest-api .",
     "docker:shell": "docker exec -it rest-api sh",
     "docker:up": "docker-compose up -d",
-    "docker:down": "docker-compose down"
+    "docker:down": "docker-compose down",
+    "test": "./node_modules/.bin/jest --verbose --detectOpenHandles --forceExit --maxWorkers 2",
+    "coverage": "./node_modules/.bin/jest --coverage --verbose"
   },
   "keywords": [],
   "devDependencies": {
