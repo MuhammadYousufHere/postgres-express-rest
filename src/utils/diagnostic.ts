@@ -9,7 +9,7 @@ const $DEV = process.env.NODE_ENV === 'development'
 
 // log file for database related errors
 
-const logFile = './db/errors.log'
+const logFile = 'server-errors.log'
 
 pgMonitor.setLog((msg, info) => {
   if (info.event === 'error') {
