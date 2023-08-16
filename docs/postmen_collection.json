@@ -1,6 +1,7 @@
 {
   "info": {
     "name": "REST API with Express SQL TS",
+    "description": "This collection is designed to test the rest API with Postgres and Redis and JWT",
     "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
   },
   "item": [
