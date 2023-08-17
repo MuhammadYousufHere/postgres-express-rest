@@ -35,7 +35,7 @@ const dbUri = config.get<string>('dbUri')
 // built-in middleware for json
 app.use(express.json())
 //cors middlware
-app.use(cors(corsOptions))
+app.use(cors())
 
 //
 app.use(compression({ filter: shouldCompress, threshold: 0 }))
@@ -77,8 +77,8 @@ function shutdown(nodeApp: StoppableServer, signal: string, value: number) {
 // has arg of context
 function start() {
   const nodeApp = stoppable(
-    app.listen({ port, host }, async () => {
-      logger.info(` ⚡️ App is up and running at http://${host}:${port}`)
+    app.listen(port, async () => {
+      logger.info(` ⚡️ App is up and running at localhost:${port}`)
     })
   )
 

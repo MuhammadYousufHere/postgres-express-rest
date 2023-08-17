@@ -16,17 +16,17 @@ services:
         - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
 
     environment:
-      - DB_CONNECTION=${DB_CONNECTION}
+      - DB_CONNECTION=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres-db:5432/my-pg-db
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=password123@
       - NODE_ENV=production
       - LOG_LEVEL=info
-      - PORT= 8080
+      - PORT=8080
     ports:
       - '8080:8080'
   postgres-db:
     container_name: postgres-db
-    image: postgres:alpine
+    image: postgres:latest
 
     ports:
       - '5432:5432'
@@ -34,11 +34,9 @@ services:
       - POSTGRES_USER=root
       - POSTGRES_PASSWORD=password123@
       - POSTGRES_DB=my-pg-db
-      - PGPASSWORD=password123@
-      - DB_CONNECTION=postgres://root:password123@postgres-db:5432/my-pg-db
     tty: true
     volumes:
-      - pgdata:/var/lib/postgresql/data
+      - ./pgdata:/var/lib/postgresql/data
 
   pg-admin:
     container_name: pgadmin4_container
