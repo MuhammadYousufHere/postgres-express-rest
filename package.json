@@ -14,7 +14,7 @@
     "lint:fix": "eslint --fix \"src/**/*.{ts,js}\"",
     "lint": "eslint \"src/**/*.{ts,js}\"",
     "docker:build": "docker build -t rest-api .",
-    "docker:shell": "docker exec -it rest-api sh",
+    "docker:bash": "docker exec -it postgres-db bash",
     "docker:up": "docker-compose up -d",
     "docker:down": "docker-compose down",
     "test": "./node_modules/.bin/jest --verbose --detectOpenHandles --forceExit --maxWorkers 2",
